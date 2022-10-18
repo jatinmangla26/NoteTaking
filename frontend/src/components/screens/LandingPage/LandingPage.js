@@ -19,7 +19,7 @@ const LandingPage = () => {
                                     Login
                                 </Button>
                             </a>
-                            <a href="/signup">
+                            <a href="/register">
                                 <Button
                                     size="lg"
                                     className="landingButton"
