@@ -5,8 +5,19 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import { FormControl } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../actions/userActions";
 const Header = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userLogin = useSelector((state) => state.userLogin);
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        dispatch(logOut());
+        navigate("/");
+    };
     return (
         <Navbar bg="primary" expand="lg" variant="dark">
             <Container>
@@ -36,7 +47,7 @@ const Header = () => {
                             </NavDropdown.Item>
 
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
+                            <NavDropdown.Item onClick={submitHandler}>
                                 Log Out
                             </NavDropdown.Item>
                         </NavDropdown>
